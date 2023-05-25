@@ -6,7 +6,6 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int _startingLane;
 
-    //[SerializeField] private int startingLane = 0;
     // Start is called before the first frame update
     void Start()
     {

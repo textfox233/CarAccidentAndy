@@ -28,13 +28,11 @@ public class ObstacleSpawner : MonoBehaviour
         // get an inactive car
         GameObject carGO = ObstaclePool.sharedInstance.GetCar();
 
-        if (carGO == null ) 
-        {
-            return;
-        }
+        // if null there are no more inactive cars
+        if (carGO == null ) { return; }
 
         // place at the end of the lane
-        carGO.transform.position += Vector3.forward * LanePositioning.sharedInstance.getLength();
+        carGO.transform.position = Vector3.forward * LanePositioning.sharedInstance.getLength();
         // set rotatation to face player
         carGO.transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
         

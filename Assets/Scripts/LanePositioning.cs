@@ -81,15 +81,6 @@ public class LanePositioning : MonoBehaviour
             return;
         }
 
-        //// get the lane's transform
-        //tmpTR = lanes.GetLane(targetLane).transform;
-
-        //// change the object's position to match the lane
-        //targetTR.position = tmpTR.position;
-
-        // save z pos
-        //float zOffset = riderTR.position.z;
-
         // change x only
         riderTR.position = new Vector3(_spacingDistance * targetLane, 0.0f, riderTR.position.z);
 

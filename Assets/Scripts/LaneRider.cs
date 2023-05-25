@@ -6,50 +6,27 @@ public class LaneRider : MonoBehaviour
 {
     [SerializeField] private int _laneIndex;
     [SerializeField] private bool _isPlayer;
-
-    // Start is called before the first frame update
-    //void Start()
-    //{
-    //    //// spawning in
-    //    //if (!_isPlayer)
-    //    //// enemies
-    //    //{
-    //    //    // place further away
-    //    //    transform.position += Vector3.forward * LanePositioning.sharedInstance.getLength();
-    //    //    // rotate to face player
-    //    //    transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
-    //    //    // randomise starting lane
-    //    //    _startingLane = Random.Range(0, LanePool.sharedInstance.GetNumOfLanes() - 1);
-    //    //}
-    //    //else
-    //    //// players
-    //    //{
-    //    //    Debug.Log("Player Starting Lane = " + _startingLane);
-
-    //    //    //// align with starting lane
-    //    //    //LanePositioning.sharedInstance.LaneAlign(transform, _startingLane);
-    //    //}
-    //    //Debug.Log(gameObject.name + " _startingLane = " + _startingLane);
-    //    //// align with starting lane
-    //    //LanePositioning.sharedInstance.LaneAlign(transform, _startingLane);
-
-    //    // spawning in
-    //    if (_isPlayer)
-    //    // enemies
-    //    {
-    //        Debug.Log("Player Starting Lane = " + _startingLane);
-
-    //        // align with starting lane
-    //        LanePositioning.sharedInstance.LaneAlign(transform, _startingLane);
-    //    }
-    //}
+    [SerializeField] private float _velocity;
 
     private void Update()
     {
+        Debug.Log(gameObject.name + " is Updating");
         if (!_isPlayer)
         // enemies move here
         {
+            //Debug.Log(gameObject.name + " is not a Player");
+            transform.Translate(Vector3.forward * _velocity * Time.deltaTime);
 
+            //gameObject.GetComponentInChildren<Rigidbody>().AddForce(Vector3.forward * -_velocity);
+            Debug.Log(gameObject.name + " Velocity is " + gameObject.GetComponent<Rigidbody>().velocity);
+
+            // if passing the camera's Z, deactivate
+            if (transform.position.z < -10)
+            {
+                //Debug.Log(gameObject.name + ".transform.position.z = " + transform.position.z + ", DEACTIVATING");
+                Debug.Log("DEACTIVATING");
+                gameObject.SetActive(false);
+            }
         }
     }
 

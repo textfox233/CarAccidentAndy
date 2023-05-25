@@ -170,6 +170,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8295163097687489226}
   - component: {fileID: 7253211459400008105}
+  - component: {fileID: 3013043838744840076}
   m_Layer: 0
   m_Name: Hatchback
   m_TagString: Car Model
@@ -211,6 +212,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _laneIndex: 0
   _isPlayer: 0
+  _velocity: 0
+--- !u!65 &3013043838744840076
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8726603433291071765}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2, y: 2, z: 4}
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &2608204741500108082
 PrefabInstance:
   m_ObjectHideFlags: 0
