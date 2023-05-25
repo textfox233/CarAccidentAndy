@@ -155,7 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lanePool: []
   lanePrefab: {fileID: 7170362814692169755, guid: c8b3dada946fb974b9c35554dd23066e, type: 3}
-  numLanes: 3
+  numLanes: 6
 --- !u!114 &76416985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,3 +437,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startingLane: 1
+--- !u!114 &1682995249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682995246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e4a7e16bd3dc644b2785ca603448f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _laneIndex: 0

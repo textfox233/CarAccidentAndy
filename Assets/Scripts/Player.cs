@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
         Debug.Log("StartingLane = " + startingLane);
 
         // align with starting lane
-        LaneSpacing.sharedInstance.LaneAlign(transform, startingLane);
+        LanePositioning.sharedInstance.LaneAlign(transform, startingLane);
     }
 
     // Update is called once per frame
@@ -27,13 +27,13 @@ public class Player : MonoBehaviour
         // Switch Lane : Left
         {
             Debug.Log("Switch Lane : Left");
-            LaneSpacing.sharedInstance.MoveObject(true);
+            LanePositioning.sharedInstance.MoveRider(gameObject, true);
         }
         if (Input.GetKeyDown(KeyCode.D))
         // Switch Lane : Right
         {
             Debug.Log("Switch Lane : Right");
-            LaneSpacing.sharedInstance.MoveObject(false);
+            LanePositioning.sharedInstance.MoveRider(gameObject, false);
         }
     }
 }
