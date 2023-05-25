@@ -153,9 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f67608de9b175d4ebba2d655821565f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lanePool: []
-  lanePrefab: {fileID: 7170362814692169755, guid: c8b3dada946fb974b9c35554dd23066e, type: 3}
-  numLanes: 4
+  _lanePool: []
+  _lanePrefab: {fileID: 7170362814692169755, guid: c8b3dada946fb974b9c35554dd23066e, type: 3}
+  _numLanes: 4
 --- !u!114 &76416985
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -437,7 +437,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70ed5eddd0539694da58a0749a3ee2e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingLane: 1
 --- !u!114 &1682995249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -451,7 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _laneIndex: 0
-  _startingLane: 0
+  _startingLane: 2
   _isPlayer: 1
 --- !u!1001 &1693617927
 PrefabInstance:
@@ -508,5 +507,69 @@ PrefabInstance:
       propertyPath: m_Name
       value: Police
       objectReference: {fileID: 0}
+    - target: {fileID: 4080203859530133191, guid: 315c0fc09f179064dabf568214306a2f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 315c0fc09f179064dabf568214306a2f, type: 3}
+--- !u!1 &1699386810
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1699386812}
+  - component: {fileID: 1699386811}
+  - component: {fileID: 1699386813}
+  m_Layer: 0
+  m_Name: ObstacleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1699386811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699386810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d44488ef7b949a4486047579842564b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _carPool: []
+  _carPrefab: {fileID: 6393378929595038062, guid: 6c052a4dd170cb344b8bca5b66b88dcf, type: 3}
+  _numCars: 2
+--- !u!4 &1699386812
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699386810}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.33215952, y: -0.8748933, z: 3.8419552}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1699386813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1699386810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 261c7c49cf8c3fb4dad78a8daafbd20f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class LanePool : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> lanePool;
-    [SerializeField] private GameObject lanePrefab;
-    [SerializeField] private int numLanes;
+    [SerializeField] private List<GameObject> _lanePool;
+    [SerializeField] private GameObject _lanePrefab;
+    [SerializeField] private int _numLanes;
 
     public static LanePool sharedInstance;
 
@@ -15,21 +15,18 @@ public class LanePool : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("ObjectPool.Start()");
+        Debug.Log("LanePool.Start()");
 
         // --- Lanes --- //
-        lanePool = new List<GameObject>();
+        _lanePool = new List<GameObject>();
         GameObject tmpGO;
 
-        //GameObject carsGO = gameObject.GetComponent<GameController>().getCars();
-        //numLanes = gameObject.transform.childCount;
-
-        // get the lane prefabs via parent
-        for (int i = 0; i < numLanes; i++)
+        // make lanes using prefabs
+        for (int i = 0; i < _numLanes; i++)
         {
-            tmpGO = Instantiate(lanePrefab);                    // make a lane
-            tmpGO.name = "Lane (" + i + ")";                    // give it a name
-            lanePool.Add(tmpGO);                                // add it to the list
+            tmpGO = Instantiate(_lanePrefab);   // make a lane
+            tmpGO.name = "Lane (" + i + ")";    // give it a name
+            _lanePool.Add(tmpGO);               // add it to the list
         }
     }
 
@@ -39,11 +36,11 @@ public class LanePool : MonoBehaviour
         // first inactive object in the pool
         if (!active)
         {
-            for (int i = 0; i < numLanes; i++)
+            for (int i = 0; i < _numLanes; i++)
             {
-                if (!lanePool[i].activeInHierarchy)
+                if (!_lanePool[i].activeInHierarchy)
                 {
-                    return lanePool[i];
+                    return _lanePool[i];
                 }
             }
 
@@ -54,11 +51,11 @@ public class LanePool : MonoBehaviour
         // last active object in the pool
         else
         {
-            for (int i = numLanes - 1; i >= 0; i--)
+            for (int i = _numLanes - 1; i >= 0; i--)
             {
-                if (lanePool[i].activeInHierarchy)
+                if (_lanePool[i].activeInHierarchy)
                 {
-                    return lanePool[i];
+                    return _lanePool[i];
                 }
             }
 
@@ -71,14 +68,14 @@ public class LanePool : MonoBehaviour
     public GameObject GetLane(int index)
     // return an object from the pool by index
     {
-        if (index >= numLanes || index < 0)
+        if (index >= _numLanes || index < 0)
         {
             Debug.Log("LanePool.GetCar() ERROR: " + index + " is out of bounds");
             return null;
         }
 
-        return lanePool[index];
+        return _lanePool[index];
     }
 
-    public int GetNumOfLanes() { return numLanes; }
+    public int GetNumOfLanes() { return _numLanes; }
 }

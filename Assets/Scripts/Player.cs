@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private int _startingLane;
+
     //[SerializeField] private int startingLane = 0;
     // Start is called before the first frame update
     void Start()
     {
-        //Debug.Log("StartingLane = " + startingLane);
+        Debug.Log("Player Starting Lane = " + _startingLane);
 
         // align with starting lane
-        //LanePositioning.sharedInstance.LaneAlign(transform, startingLane);
+        LanePositioning.sharedInstance.LaneAlign(transform, _startingLane);
     }
 
     // Update is called once per frame
