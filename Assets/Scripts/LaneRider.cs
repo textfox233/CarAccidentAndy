@@ -4,20 +4,37 @@ using UnityEngine;
 
 public class LaneRider : MonoBehaviour
 {
-    [SerializeField] private int _laneIndex;
+    [SerializeField] private int _laneIndex, _startingLane;
     [SerializeField] private bool _isPlayer;
 
     // Start is called before the first frame update
     void Start()
     {
+        // spawning in
         if (!_isPlayer)
-        // enemies spawn further away, facing player
+        // enemies
         {
-
-            transform.rotation = Quaternion.AngleAxis(180.0f, Vector3.up);
+            // place further away
+            transform.position += Vector3.forward * LanePositioning.sharedInstance.getLength();
+            // rotate to face player
+            transform.rotation = Quaternion.AngleAxis(180, Vector3.up);
+            // randomise starting lane
+            _startingLane = Random.Range(0, LanePool.sharedInstance.GetNumOfLanes() - 1);
         }
+        else
+        // players
+        {
+            Debug.Log("Player Starting Lane = " + _startingLane);
+
+            //// align with starting lane
+            //LanePositioning.sharedInstance.LaneAlign(transform, _startingLane);
+        }
+        Debug.Log(gameObject.name + " _startingLane = " + _startingLane);
+
+        // align with starting lane
+        LanePositioning.sharedInstance.LaneAlign(transform, _startingLane);
     }
 
-    public void setPosition(int position) { _laneIndex = position; }
-    public int getPosition() { return _laneIndex; }
+    public void setIndex(int position) { _laneIndex = position; }
+    public int getIndex() { return _laneIndex; }
 }

@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+//using System.Numerics;
 using UnityEngine;
 
 public class LanePositioning : MonoBehaviour
 {
-    [SerializeField] private float spacingDistance;
+    [SerializeField] private float _spacingDistance = 6;
+    [SerializeField] private float _laneLength = 20;
 
     public static LanePositioning sharedInstance;
 
@@ -22,7 +24,7 @@ public class LanePositioning : MonoBehaviour
             GameObject tmpLane = LanePool.sharedInstance.GetLane(i);
 
             // Position Each Lane
-            tmpLane.transform.position += Vector3.right * (spacingDistance * i);
+            tmpLane.transform.position = Vector3.right * (_spacingDistance * i);
         }
 
         // grab camera
@@ -31,25 +33,25 @@ public class LanePositioning : MonoBehaviour
         //Debug.Log(cameraTR.name);
 
         // position camera in the middle
-        cameraTR.position += Vector3.right * ((spacingDistance * (maxLanes - 1)) / 2);
+        cameraTR.position += Vector3.right * ((_spacingDistance * (maxLanes - 1)) / 2);
     }
 
     // Moves an object from one lane to the next (bool true/false = left/right)
     public void MoveRider(GameObject riderGO, bool direction)
     {
         // get riders's lane index
-        int laneIndex = riderGO.GetComponent<LaneRider>().getPosition();
+        int laneIndex = riderGO.GetComponent<LaneRider>().getIndex();
 
         if (direction)
         // moving left
         {
-            //Debug.Log("Moving left");
+            Debug.Log("Moving left");
             laneIndex--;
         }
         else
         // moving right
         {
-            //Debug.Log("Moving right");
+            Debug.Log("Moving right");
             laneIndex++;
         }
 
@@ -66,11 +68,10 @@ public class LanePositioning : MonoBehaviour
     }
 
     // Aligns a gameObject with a specific lane
-    public void LaneAlign(Transform targetTR, int targetLane)
+    public void LaneAlign(Transform riderTR, int targetLane)
     {
         // get the lane pool
         LanePool lanes = LanePool.sharedInstance;
-        Transform tmpTR;
 
         // is the lane number invalid?
         if (targetLane < 0 || targetLane > lanes.GetNumOfLanes())
@@ -79,14 +80,22 @@ public class LanePositioning : MonoBehaviour
             Debug.Log("Lane number invalid");
             return;
         }
-        
-        // get the lane's transform
-        tmpTR = lanes.GetLane(targetLane).transform;
 
-        // change the object's position to match the lane
-        targetTR.position = tmpTR.position;
+        //// get the lane's transform
+        //tmpTR = lanes.GetLane(targetLane).transform;
 
-        // set lane position to target
-        targetTR.gameObject.GetComponent<LaneRider>().setPosition(targetLane);
+        //// change the object's position to match the lane
+        //targetTR.position = tmpTR.position;
+
+        // save z pos
+        //float zOffset = riderTR.position.z;
+
+        // change x only
+        riderTR.position = new Vector3(_spacingDistance * targetLane, 0.0f, riderTR.position.z);
+
+        // set lane index to match
+        riderTR.gameObject.GetComponent<LaneRider>().setIndex(targetLane);
     }
+
+    public float getLength() { return _laneLength; }
 }
